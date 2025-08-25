@@ -4,6 +4,24 @@
     box-sizing: border-box;
 }
 
-.hidden {
-    display: none;
+body {
+    margin: 20px;
+    padding: 20px;
+    
+}
+
+h1 {
+    text-align: center;
+    background-color: lightyellow;
+}
+
+.gameboard {
+    background-color: lightblue;
+    height: 600px;
+    width: 600px;
+}
+
+.gameboard-container {
+    display: flex;
+    justify-content: space-evenly;
 }
