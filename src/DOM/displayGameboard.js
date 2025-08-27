@@ -1,10 +1,45 @@
-export function displayGameboard (gameboardObject, playerGameboardClass) {
-    const gameboardDOMRef = document.querySelector(`.${playerGameboardClass}`);
-    clearGameboard(gameboardDOMRef);
-    const arrayCells = Array.from(gameboardDOMRef.querySelectorAll('.cell'));
-    const allCoordsOfShips = gameboardObject.allCoords();
-    const convertedAllCoords= allCoordsOfShips.map(convertCoordsIntoNumber);
+export function displayHiddenGameboard (gameboardObject, playerGameboardClass) {
+    const gameboardDOMEl = document.querySelector(`.${playerGameboardClass}`);
+    clearGameboard(gameboardDOMEl);
+    const arrayCells = Array.from(gameboardDOMEl.querySelectorAll('.cell'));
     
+    displayMissedShots(gameboardObject, arrayCells);
+    
+    displayGoodShots(gameboardObject, arrayCells);
+}
+
+export function displayGameboard (gameboardObject, playerGameboardClass) {
+    const gameboardDOMEl = document.querySelector(`.${playerGameboardClass}`);
+    clearGameboard(gameboardDOMEl);
+    const arrayCells = Array.from(gameboardDOMEl.querySelectorAll('.cell'));
+    
+    displayShips(gameboardObject, arrayCells);
+
+    displayMissedShots(gameboardObject, arrayCells);
+    
+    displayGoodShots(gameboardObject, arrayCells);
+}
+
+
+function displayMissedShots (gameboard, arrayCells) {
+    const allMissedShots = gameboard.missedShots;
+    const convertedMissedShots = allMissedShots.map(convertCoordsIntoNumber);
+    for (let coordNumb of convertedMissedShots) {
+        arrayCells[coordNumb].classList.toggle('missed');
+    };
+};
+
+function displayGoodShots (gameboard, arrayCells) {
+    const allGoodShots = gameboard.goodShots;
+    const convertedGoodShots = allGoodShots.map(convertCoordsIntoNumber);
+    for (let coordNumb of convertedGoodShots) {
+        arrayCells[coordNumb].classList.toggle('hit');
+    };
+};
+
+function displayShips (gameboard, arrayCells) {
+    const allCoordsOfShips = gameboard.allCoords();
+    const convertedAllCoords= allCoordsOfShips.map(convertCoordsIntoNumber);
     for (let coordNumb of convertedAllCoords) {
         arrayCells[coordNumb].classList.toggle('occupied');
     };
@@ -23,9 +58,3 @@ function clearGameboard (gameboardDOMEl) {
     }
 }
 
-
-export function displayHiddenGameboard (gameboardObject, playerGameboardClass) {
-    const gameboardDOMEl = document.querySelector(`.${playerGameboardClass}`);
-    clearGameboard(gameboardDOMEl);
-    const arrayCells = Array.from(gameboardDOMEl.querySelectorAll('.cell'));
-}

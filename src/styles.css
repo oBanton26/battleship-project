@@ -13,6 +13,7 @@ body {
 h1 {
     text-align: center;
     background-color: lightyellow;
+    margin-bottom: 35px;
 }
 
 .gameboard {
@@ -42,6 +43,14 @@ h1 {
 }
 .occupied { 
     background-color: black;
+}
+
+.missed {
+    background-color: rgb(255, 218, 148);
+}
+
+.hit {
+    background-color: red;
 }
 
 .gameboard-container {
