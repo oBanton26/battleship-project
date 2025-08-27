@@ -35,4 +35,8 @@ test ('reports true if all ships are sunk', ()=>{
     testGameboard.receiveAttack([2,4]);
     testGameboard.receiveAttack([3,4]);
     expect(testGameboard.hasAllShipsDestroyed()).toBe(true);
+});
+
+test ('returns an array of all the coords of its ships', ()=>{
+    expect(testGameboard.allCoords()).toEqual([[0,0],[0,1],[2,4],[3,4]]);
 })

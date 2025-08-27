@@ -28,6 +28,16 @@ export class Gameboard {
             return el.ship.isSunk();
         });
         return allShipsAreSunk;
+    };
+
+    allCoords() {
+        const result = [];
+        for (let placements of this.ships) {
+            placements.coords.forEach((value) => {
+                result.push(value);
+            })
+        };
+        return result;
     }
 };
 
