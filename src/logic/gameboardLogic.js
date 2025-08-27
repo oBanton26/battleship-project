@@ -3,7 +3,8 @@ import { Ship } from "./shipLogic";
 export class Gameboard {
     constructor (){
         this.ships = [];
-        this.missedShot = [];
+        this.missedShots = [];
+        this.goodShots = [];
     };
 
     addShip (array) {
@@ -17,9 +18,10 @@ export class Gameboard {
     receiveAttack(attack) {
         let shipAttacked = shotIsAccurate(attack, this.ships);
         if (shipAttacked) {
-            shipAttacked.ship.hit()
+            shipAttacked.ship.hit();
+            this.goodShots.push(attack);
         } else {
-            this.missedShot.push(attack);
+            this.missedShots.push(attack);
         }
     };
 

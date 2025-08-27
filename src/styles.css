@@ -28,9 +28,19 @@ h1 {
 
 .cell {
     background-color: white;
+    font-size: 2rem;
+    display: grid;
+    place-content: center;
 }
 
-.occupied {
+.cell:hover {
+    background-color: rgb(236, 236, 236);
+}
+
+.cell.occupied:hover {
+    background-color: rgb(51, 51, 51);
+}
+.occupied { 
     background-color: black;
 }
 

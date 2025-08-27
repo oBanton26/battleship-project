@@ -22,3 +22,10 @@ function clearGameboard (gameboardDOMEl) {
         gameboardDOMEl.appendChild(cell);
     }
 }
+
+
+export function displayHiddenGameboard (gameboardObject, playerGameboardClass) {
+    const gameboardDOMEl = document.querySelector(`.${playerGameboardClass}`);
+    clearGameboard(gameboardDOMEl);
+    const arrayCells = Array.from(gameboardDOMEl.querySelectorAll('.cell'));
+}

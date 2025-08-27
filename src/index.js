@@ -1,6 +1,6 @@
 import "./styles.css";
 import { Player } from './logic/playerLogic'
-import { displayGameboard } from "./DOM/displayGameboard";
+import { displayGameboard, displayHiddenGameboard } from "./DOM/displayGameboard";
 
 // Game
 const playerReal = new Player(true);
@@ -12,4 +12,4 @@ playerComputer.gameboard.addShip([[3,1],[3,2]]);
 playerComputer.gameboard.addShip([[5,5],[4,5],[3,5]]);
 
 displayGameboard(playerReal.gameboard, 'player-gameboard');
-displayGameboard(playerComputer.gameboard, 'computer-gameboard');
+displayHiddenGameboard(playerComputer.gameboard, 'computer-gameboard');

@@ -18,7 +18,7 @@ test ('receives attacks', ()=>{
 
 test ('keeps track of missed shot', ()=>{
     testGameboard.receiveAttack([6,6]);
-    expect(testGameboard.missedShot).toContainEqual([6,6]);
+    expect(testGameboard.missedShots).toContainEqual([6,6]);
 })
 
 test ('isAccurate function works', ()=>{
@@ -39,4 +39,8 @@ test ('reports true if all ships are sunk', ()=>{
 
 test ('returns an array of all the coords of its ships', ()=>{
     expect(testGameboard.allCoords()).toEqual([[0,0],[0,1],[2,4],[3,4]]);
-})
+});
+
+test ('keeps track of good shots', ()=>{
+    expect(testGameboard.goodShots).toContainEqual([0,1],[3,4]);
+}) 
