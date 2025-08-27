@@ -19,6 +19,19 @@ h1 {
     background-color: lightblue;
     height: 600px;
     width: 600px;
+    padding: 2px;
+
+    display: grid;
+    grid-template: repeat(10,1fr) / repeat(10,1fr);
+    gap: 2px;
+}
+
+.cell {
+    background-color: white;
+}
+
+.occupied {
+    background-color: black;
 }
 
 .gameboard-container {
