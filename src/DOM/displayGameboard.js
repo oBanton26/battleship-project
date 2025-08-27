@@ -3,7 +3,8 @@ export function displayGameboard (gameboardObject, playerGameboardClass) {
     clearGameboard(gameboardDOMRef);
     const arrayCells = Array.from(gameboardDOMRef.querySelectorAll('.cell'));
     const allCoordsOfShips = gameboardObject.allCoords();
-    const convertedAllCoords= allCoordsOfShips.map((value)=>{return convertCoordsIntoNumber(value)});
+    const convertedAllCoords= allCoordsOfShips.map(convertCoordsIntoNumber);
+    
     for (let coordNumb of convertedAllCoords) {
         arrayCells[coordNumb].classList.toggle('occupied');
     };
