@@ -1,4 +1,4 @@
-import { addActionOnCells } from "./eventListeners";
+import { addPlayabilityOnCells } from "./eventListeners";
 
 export function displayGameboard (playerObject) {
     const gameboardObject = playerObject.gameboard;
@@ -59,7 +59,7 @@ function resetGameboard (gameboardDOMEl, playerObject) {
     for (let i=0; i<100; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell', "blank");
-        addActionOnCells(cell, playerObject, i);
+        addPlayabilityOnCells(cell, playerObject, i);
         gameboardDOMEl.appendChild(cell);
     }
 }
