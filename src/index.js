@@ -16,5 +16,5 @@ playerComputer.gameboard.receiveAttack([4,7]);
 playerComputer.gameboard.receiveAttack([8,3]);
 playerComputer.gameboard.receiveAttack([3,1]);
 
-displayGameboard(playerReal.gameboard, 'player-gameboard');
-displayHiddenGameboard(playerComputer.gameboard, 'computer-gameboard');
+displayGameboard(playerReal);
+displayGameboard(playerComputer);

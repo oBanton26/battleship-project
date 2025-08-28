@@ -1,23 +1,23 @@
-export function displayHiddenGameboard (gameboardObject, playerGameboardClass) {
-    const gameboardDOMEl = document.querySelector(`.${playerGameboardClass}`);
-    clearGameboard(gameboardDOMEl);
+import { addActionOnCells } from "./eventListeners";
+
+export function displayGameboard (playerObject) {
+    const gameboardObject = playerObject.gameboard;
+    let gameboardDOMEl;
+    if (playerObject.isReal) {
+        gameboardDOMEl = document.querySelector('.player-gameboard')
+    } else {
+        gameboardDOMEl = document.querySelector('.computer-gameboard');
+    }
+    resetGameboard(gameboardDOMEl, playerObject);
     const arrayCells = Array.from(gameboardDOMEl.querySelectorAll('.cell'));
     
     displayMissedShots(gameboardObject, arrayCells);
     
     displayGoodShots(gameboardObject, arrayCells);
-}
-
-export function displayGameboard (gameboardObject, playerGameboardClass) {
-    const gameboardDOMEl = document.querySelector(`.${playerGameboardClass}`);
-    clearGameboard(gameboardDOMEl);
-    const arrayCells = Array.from(gameboardDOMEl.querySelectorAll('.cell'));
     
-    displayShips(gameboardObject, arrayCells);
-
-    displayMissedShots(gameboardObject, arrayCells);
-    
-    displayGoodShots(gameboardObject, arrayCells);
+    if (playerObject.isReal) {
+        displayShips(gameboardObject, arrayCells);
+    }
 }
 
 
@@ -49,12 +49,12 @@ function convertCoordsIntoNumber (coord) {
     return coord[0]*10 + coord[1];
 };
 
-function clearGameboard (gameboardDOMEl) {
+function resetGameboard (gameboardDOMEl, playerObject) {
     gameboardDOMEl.textContent = '';
     for (let i=0; i<100; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell');
+        addActionOnCells(cell, playerObject);
         gameboardDOMEl.appendChild(cell);
     }
 }
-
