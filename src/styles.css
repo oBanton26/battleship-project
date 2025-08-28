@@ -34,13 +34,10 @@ h1 {
     place-content: center;
 }
 
-.cell:hover {
+.blank:hover {
     background-color: rgb(236, 236, 236);
 }
 
-.cell.occupied:hover {
-    background-color: rgb(51, 51, 51);
-}
 .occupied { 
     background-color: black;
 }

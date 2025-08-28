@@ -26,6 +26,7 @@ function displayMissedShots (gameboard, arrayCells) {
     const convertedMissedShots = allMissedShots.map(convertCoordsIntoNumber);
     for (let coordNumb of convertedMissedShots) {
         arrayCells[coordNumb].classList.toggle('missed');
+        arrayCells[coordNumb].classList.toggle('blank');
     };
 };
 
@@ -34,6 +35,7 @@ function displayGoodShots (gameboard, arrayCells) {
     const convertedGoodShots = allGoodShots.map(convertCoordsIntoNumber);
     for (let coordNumb of convertedGoodShots) {
         arrayCells[coordNumb].classList.toggle('hit');
+        arrayCells[coordNumb].classList.toggle('blank');
     };
 };
 
@@ -42,6 +44,9 @@ function displayShips (gameboard, arrayCells) {
     const convertedAllCoords= allCoordsOfShips.map(convertCoordsIntoNumber);
     for (let coordNumb of convertedAllCoords) {
         arrayCells[coordNumb].classList.toggle('occupied');
+        if (!arrayCells[coordNumb].classList.contains('hit')){
+            arrayCells[coordNumb].classList.toggle('blank');
+        }
     };
 }
 
@@ -53,8 +58,8 @@ function resetGameboard (gameboardDOMEl, playerObject) {
     gameboardDOMEl.textContent = '';
     for (let i=0; i<100; i++) {
         const cell = document.createElement('div');
-        cell.classList.add('cell');
-        addActionOnCells(cell, playerObject);
+        cell.classList.add('cell', "blank");
+        addActionOnCells(cell, playerObject, i);
         gameboardDOMEl.appendChild(cell);
     }
 }

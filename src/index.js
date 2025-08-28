@@ -1,6 +1,6 @@
 import "./styles.css";
 import { Player } from './logic/playerLogic'
-import { displayGameboard, displayHiddenGameboard } from "./DOM/displayGameboard";
+import { displayGameboard } from "./DOM/displayGameboard";
 
 // Game
 const playerReal = new Player(true);
