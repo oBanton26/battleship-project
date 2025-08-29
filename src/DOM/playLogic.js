@@ -1,5 +1,5 @@
 import { shotIsAccurate } from "../logic/gameboardLogic";
-import { computersPlay, displayComputerTurnMessage } from "./computersTurn";
+import { computersPlay, displayMessage } from "./computersTurn";
 import { displayGameboard } from "./displayGameboard";
 import { isValidShot } from "./eventListeners";
 
@@ -10,12 +10,12 @@ export function handlePlay(coords, playerObject) {
         displayGameboard(playerObject);
 
         if (shotIsAccurate(coords, playerObject.gameboard.ships)) {
-            console.log("You shot an ennemy ship, strike again !");
+            displayMessage("You shot an ennemy ship, strike again !")
         } else {
-            displayComputerTurnMessage();
+            displayMessage("It's the computer's turn now");
             computersPlay();
         }
     } else {
-        console.log('Hey you cannot do that, try again')
+        displayMessage('Hey you cannot do that, try again')
     }
 }

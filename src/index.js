@@ -3,7 +3,7 @@ import { Player } from './logic/playerLogic'
 import { displayGameboard } from "./DOM/displayGameboard";
 
 // Game
-const player = new Player(true);
+export const player = new Player(true);
 const computer = new Player(false);
 
 player.gameboard.addShip([[0,0],[0,1]]);
