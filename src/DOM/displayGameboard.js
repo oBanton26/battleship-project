@@ -1,3 +1,4 @@
+import { displayMessage } from "./computersTurn";
 import { addPlayabilityOnCells } from "./eventListeners";
 
 export function displayGameboard (playerObject) {
@@ -17,6 +18,16 @@ export function displayGameboard (playerObject) {
     
     if (playerObject.isReal) {
         displayShips(gameboardObject, arrayCells);
+    }
+
+    if (playerObject.gameboard.hasAllShipsDestroyed()) {
+        let playerName;
+        if (playerObject.isReal) {
+            playerName = 'The Computer'
+        } else {
+            playerName = 'You'
+        }
+        displayMessage(`${playerName} won !!`)
     }
 }
 

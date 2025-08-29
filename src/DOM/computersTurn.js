@@ -14,14 +14,15 @@ export function computersPlay () {
         setTimeout(()=>{
             player.gameboard.receiveAttack(coords);
             displayGameboard(player);
-            displayMessage("The computer played");
             if (shotIsAccurate(coords, player.gameboard.ships)) {
-                displayMessage("The computer shot one of your ship, he gets to strike again !");
-                computersPlay();
+                if (!player.gameboard.hasAllShipsDestroyed()) {
+                    displayMessage("The computer shot one of your ship, he gets to strike again !");
+                    computersPlay();
+                }
             } else {
-                displayMessage("It's your turn now");
+                displayMessage("The computer played, it's your turn now");
             }
-        }, 1000);
+        }, 500);
 
     } else {
         computersPlay();

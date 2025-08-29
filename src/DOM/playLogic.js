@@ -10,7 +10,9 @@ export function handlePlay(coords, playerObject) {
         displayGameboard(playerObject);
 
         if (shotIsAccurate(coords, playerObject.gameboard.ships)) {
-            displayMessage("You shot an ennemy ship, strike again !")
+            if (!playerObject.gameboard.hasAllShipsDestroyed()) {
+                displayMessage("You shot an ennemy ship, strike again !")
+            }
         } else {
             displayMessage("It's the computer's turn now");
             computersPlay();

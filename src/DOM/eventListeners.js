@@ -1,7 +1,8 @@
+import { player } from "..";
 import { handlePlay } from "./playLogic";
 
 export function addPlayabilityOnCells (cellEl, playerObject, pos) {
-    if (!playerObject.isReal) {
+    if (!playerObject.isReal && !playerObject.gameboard.hasAllShipsDestroyed() && !player.gameboard.hasAllShipsDestroyed()) {
         cellEl.addEventListener('click', ()=>{
             const coords = convertNumberIntoCoords(pos);
             handlePlay(coords, playerObject);
