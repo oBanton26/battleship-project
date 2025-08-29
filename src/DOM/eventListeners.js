@@ -1,15 +1,10 @@
-import { displayGameboard } from "./displayGameboard";
+import { handlePlay } from "./playLogic";
 
 export function addPlayabilityOnCells (cellEl, playerObject, pos) {
     if (!playerObject.isReal) {
         cellEl.addEventListener('click', ()=>{
             const coords = convertNumberIntoCoords(pos);
-            if (isValidShot(coords, playerObject)) {
-                playerObject.gameboard.receiveAttack(coords);
-            } else {
-                console.log('Hey you cannot do that')
-            }
-            displayGameboard(playerObject);
+            handlePlay(coords, playerObject);
         })
     }
 };
