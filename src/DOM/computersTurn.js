@@ -4,7 +4,8 @@ import { displayGameboard } from "./displayGameboard";
 import { convertNumberIntoCoords, isValidShot } from "./eventListeners";
 
 export function displayMessage (message) {
-    console.log(message);
+    const messageContainer = document.querySelector('.message-container');
+    messageContainer.textContent = message;
 };
 
 export function computersPlay () {

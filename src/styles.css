@@ -51,13 +51,18 @@ h1 {
 }
 
 .gameboard-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template: 10fr 1fr / 1fr 1fr;
+    place-items: center;
 }
 
 .player-name {
     font-size: 1.5rem;
     width: 450px;
     text-align: center;
+}
+
+.message-container {
+    text-align: center;
+    font-size: 1.8rem;
 }
