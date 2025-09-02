@@ -27,7 +27,8 @@ export function displayGameboard (playerObject) {
         } else {
             playerName = 'You'
         }
-        displayMessage(`${playerName} won !!`)
+        displayMessage(`${playerName} won !!`);
+        freezeWindow();
     }
 }
 
@@ -73,4 +74,10 @@ function resetGameboard (gameboardDOMEl, playerObject) {
         addPlayabilityOnCells(cell, playerObject, i);
         gameboardDOMEl.appendChild(cell);
     }
+};
+
+function freezeWindow() {
+    window.addEventListener('click', function(event) {
+        event.stopImmediatePropagation();
+    }, true);
 }
