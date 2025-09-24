@@ -1,14 +1,14 @@
 export function generateRandomShipPlacements() {
     const result = [];
     const previousCoords = [];
-    for (let i=0; i<4; i++) {
+    for (let i=0; i<2; i++) {
         const ship = generateOneRandomShip(4, previousCoords)
         result.push(ship)
         for (let coords of ship) {
             addTileAndSurroundingTilesToPreviousCoords(coords, previousCoords)
         };
     }
-    for (let i=0; i<4; i++) {
+    for (let i=0; i<3; i++) {
         const ship = generateOneRandomShip(3, previousCoords)
         result.push(ship)
         for (let coords of ship) {
@@ -24,7 +24,7 @@ export function generateRandomShipPlacements() {
         };
 
     }
-    
+
     return result;
 }
 
@@ -41,22 +41,22 @@ export function generateOneRandomShip (length, previousCoords) {
     for (let i=0; i<length-1; i++) {
         const lastCoordsOfResult = result[result.length-1];
         if (randomDirection) {
-            if (lastCoordsOfResult[1] === 9) {
-                return generateOneRandomShip(length, previousCoords);
-            }
             
             const nextPos = [];
             nextPos.push(lastCoordsOfResult[0])
             nextPos.push(lastCoordsOfResult[1]+1)
-            result.push(nextPos)
-        } else {
-            if (lastCoordsOfResult[0] === 9) {
+            if (lastCoordsOfResult[1] === 9 || isInPreviousCoords(nextPos, previousCoords)) {
                 return generateOneRandomShip(length, previousCoords);
             }
-
+            result.push(nextPos)
+        } else {
+            
             const nextPos = [];
             nextPos.push(lastCoordsOfResult[0]+1)
             nextPos.push(lastCoordsOfResult[1])
+            if (lastCoordsOfResult[0] === 9 || isInPreviousCoords(nextPos, previousCoords)) {
+                return generateOneRandomShip(length, previousCoords);
+            }
             result.push(nextPos)
         }
     }
